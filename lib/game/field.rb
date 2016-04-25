@@ -1,5 +1,6 @@
 class Field
-  def initialize
+  def initialize(value)
     @id = SecureRandom.uuid
+    @value = value
   end
 end

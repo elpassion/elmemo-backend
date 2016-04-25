@@ -1,6 +1,6 @@
 require_relative 'field'
 class Board
   def initialize
-    @fields = Array.new(8) { Field.new }
+    @fields = (0..7).map { rand(1..100) }.map { |value| [Field.new(value), Field.new(value)] }.flatten
   end
 end
