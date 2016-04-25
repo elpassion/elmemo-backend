@@ -3,18 +3,19 @@ class GameFormatter
 
   def self.show(game, field1, field2)
     check_if_pair(field1, field2, game) if field1 && field2
-    game2 = render_for_no_params(duplicate(game))
-    game2 = reveal([field1, field2], duplicate(game)) if field1 || field2
-    game2.state[:board].fields
+    reveal([field1, field2], game)
   end
 
   private
 
   def self.reveal(chosen_fields, game)
-    game.state[:board].fields.each do |field|
-      field.value = 'unknown' unless chosen_fields.include?(field.id) || field.matched
+    game.state[:board].fields.map do |field|
+      f = field.dup
+      unless chosen_fields.include?(field.id) || field.matched
+        f.value = 'unknown'
+      end
+      f
     end
-    game
   end
 
   def self.check_if_pair(field1, field2, game)
@@ -24,12 +25,5 @@ class GameFormatter
       first_field.matched = true
       second_field.matched = true
     end
-  end
-
-  def self.render_for_no_params(game)
-    game.state[:board].fields.each do |field|
-      field.value = 'unknown' unless field.matched
-    end
-    game
   end
 end
