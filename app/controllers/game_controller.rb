@@ -1,7 +1,7 @@
 require_relative '../../lib/game/board'
 class GameController < ApplicationController
   def create
-    @game = Game.create(state: { 'board': 1 })
+    @game = Game.create(state: { 'board': ::Board.new })
     redirect_to game_show_path(@game.id)
   end
 
