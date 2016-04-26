@@ -2,7 +2,7 @@ require_relative '../../lib/board/board'
 class GameFormatter
 
   def self.show(game, field1, field2)
-    check_if_pair(field1, field2, game) unless (field1.blank? || field2.blank?)
+    check_if_pair(field1, field2, game) unless (field1.blank? || field2.blank?) || field1 == field2
     {
         fields: reveal([field1, field2], game),
         is_won?: game.state[:board].is_won?
