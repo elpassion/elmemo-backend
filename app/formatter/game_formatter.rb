@@ -1,4 +1,4 @@
-require_relative '../../lib/game/board'
+require_relative '../../lib/board/board'
 class GameFormatter
 
   def self.show(game, field1, field2)

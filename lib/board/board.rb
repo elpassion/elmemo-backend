@@ -1,4 +1,5 @@
 require_relative 'field'
+
 class Board
 
   attr_reader :fields
