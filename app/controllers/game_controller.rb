@@ -3,7 +3,7 @@ class GameController < ApplicationController
 
   def create
     @game = Game.create
-    redirect_to game_show_path(@game.id)
+    render json: {game: game_show_url(@game.id)}
   end
 
   def show
