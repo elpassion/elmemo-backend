@@ -24,6 +24,7 @@ class GameFormatter
     if first_field.value == second_field.value
       first_field.matched = true
       second_field.matched = true
+      game.save
     end
   end
 end
