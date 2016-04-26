@@ -3,7 +3,10 @@ class GameFormatter
 
   def self.show(game, field1, field2)
     check_if_pair(field1, field2, game) unless (field1.blank? || field2.blank?)
-    reveal([field1, field2], game)
+    {
+        fields: reveal([field1, field2], game),
+        is_won?: game.state[:board].is_won?
+    }
   end
 
   private
